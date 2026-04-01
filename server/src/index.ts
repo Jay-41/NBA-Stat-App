@@ -240,7 +240,8 @@ app.get("/api/players", async (req, res) => {
   }
 });
 
-const port = Number(process.env.PORT ?? 5174);
+// Default 5175 so Vite can use 5173/5174 if those ports are already taken.
+const port = Number(process.env.PORT ?? 5175);
 app.listen(port, () => {
   // eslint-disable-next-line no-console
   console.log(`Server listening on http://localhost:${port}`);

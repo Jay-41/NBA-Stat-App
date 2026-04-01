@@ -29,10 +29,10 @@ Start **both** the API and the Vite dev server:
 npm run dev
 ```
 
-- **Frontend:** [http://localhost:5173](http://localhost:5173)
-- **API:** [http://localhost:5174](http://localhost:5174)
+- **Frontend:** [http://localhost:5173](http://localhost:5173) (if that port is busy, Vite picks the next free port; check the terminal output.)
+- **API:** [http://localhost:5175](http://localhost:5175) (override with `PORT` if needed.)
 
-During development, Vite proxies requests under `/api` to the backend on port `5174`.
+During development, Vite proxies requests under `/api` to the backend on port **5175** so it does not collide with Vite when port 5173 is already in use.
 
 Run only the client or only the server if you prefer:
 
@@ -58,7 +58,7 @@ Run the compiled API:
 npm start
 ```
 
-Serve `client/dist/` with any static file host and point API requests to wherever `npm start` is listening (default port `5174`, or set `PORT`).
+Serve `client/dist/` with any static file host and point API requests to wherever `npm start` is listening (default port `5175`, or set `PORT`).
 
 ## API (summary)
 
