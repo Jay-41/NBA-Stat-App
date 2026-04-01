@@ -148,6 +148,7 @@ app.get("/api/players", async (req, res) => {
             ? req.query.perMode.trim()
             : "PerGame";
         const search = typeof req.query.search === "string" ? req.query.search : "";
+        const trimmedSearch = search.trim();
         const team = typeof req.query.team === "string" ? req.query.team : "";
         const sortBy = typeof req.query.sortBy === "string" ? req.query.sortBy : "pts";
         const sortDir = typeof req.query.sortDir === "string" ? req.query.sortDir : "desc";
@@ -155,8 +156,8 @@ app.get("/api/players", async (req, res) => {
         const offset = typeof req.query.offset === "string" ? Number(req.query.offset) : 0;
         const all = await getCachedLeagueDash({ season, seasonType, perMode });
         let filtered = all;
-        if (search.trim()) {
-            filtered = filtered.filter((p) => includesInsensitive(p.playerName, search));
+        if (trimmedSearch) {
+            filtered = filtered.filter((p) => includesInsensitive(p.playerName, trimmedSearch));
         }
         if (team.trim()) {
             filtered = filtered.filter((p) => p.teamAbbr === team.trim().toUpperCase());
